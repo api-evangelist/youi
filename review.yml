@@ -1,0 +1,204 @@
+aid: youi
+name: Youi
+review:
+  question: Does Youi expose a public, self-serve developer portal or documented API
+    for quote, bind, issue, or FNOL?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: Australia
+  tier: carrier-pc
+  gated: true
+findings:
+  summary: |
+    Youi publishes no public API surface. Every first-party developer-portal
+    candidate was probed on 2026-07-25 and none exists: developer.youi.com.au,
+    developers.youi.com.au, docs.youi.com.au and api.youi.com.au do not resolve
+    in DNS at all, and https://www.youi.com.au/developers, /api, /developer,
+    /partners and /integrations each return HTTP 404. The published sitemap
+    (https://www.youi.com.au/sitemap.xml, HTTP 200, 618 URLs) contains no
+    developer, API, integration or broker-integration page — the only pages
+    matching "partner" are sports sponsorships (NRL, Brisbane Lions).
+
+    The one host that resolves and answers is portal.youi.com.au (HTTP 200),
+    which is a CUSTOMER self-service policy portal, not a developer portal: it
+    is an Angular single-page application titled "Youi Portal", carries
+    <meta name="robots" content="noindex">, and links to a policy-manager login
+    at https://secure.youi.com.au/Authentication/PolicyLogin.aspx. Its own HTML
+    declares a private backend at https://portalapi.youi.com.au/ — that host
+    resolves but returns HTTP 404 at root and serves no documentation:
+    /swagger/index.html, /swagger/v1/swagger.json and /openapi.json all return
+    HTTP 404. This is a first-party SPA backend, not a published API, and it is
+    deliberately NOT listed as an API in apis.yml.
+
+    No OpenAPI or Swagger document was found, so no openapi/ directory exists in
+    this repo. No public Postman collection or workspace was found. No GraphQL
+    endpoint was found. No .proto files. No webhook or event catalog and no
+    AsyncAPI — an absence that is itself the finding for this sector.
+
+    ACORD posture: no ACORD reference found. Searches across the Youi public
+    site and sitemap for ACORD, AL3, ACORD XML, ACORD certified and NGDS
+    returned nothing. This is consistent with Youi's direct-to-consumer model —
+    it does not distribute through brokers or agency management systems, so it
+    has no agency-download / IVANS-style seam and no reason to publish ACORD
+    transports.
+
+    Quote / bind / issue / FNOL: none of the four insurance verbs is exposed
+    programmatically to any external party. Quoting is a consumer web/phone
+    flow (https://www.youi.com.au/quote-start, HTTP 200); claims/FNOL is a
+    consumer web and phone flow (https://www.youi.com.au/claiming). There is no
+    agent-facing or partner-facing API and no embedded-insurance distribution
+    surface.
+
+    Auth model: no public/documented developer authentication exists. There is
+    no OpenID Connect discovery document — https://www.youi.com.au/.well-known/openid-configuration
+    and https://portalapi.youi.com.au/.well-known/openid-configuration both
+    return HTTP 404, as does /.well-known/oauth-authorization-server. The only
+    observable authentication is an end-customer session login into the ASP.NET
+    policy-manager at secure.youi.com.au (HTTP 200) fronting the SPA portal.
+
+    Market context: Australia has the legal machinery for open insurance and no
+    live obligation. APRA supervises prudentially; the Consumer Data Right that
+    opened banking and energy was designated to extend to general insurance and
+    then deferred and de-prioritised. Youi is a general insurer, so no CDR
+    obligation touches it, and nothing else forces a public interface.
+  developerPortal:
+    url: ''
+    confirmed: false
+    classification: none
+    note: No developer portal of any kind exists. The nearest surface,
+      portal.youi.com.au, is a customer policy login wall (classification b),
+      not a developer portal.
+  transports:
+  - protocol: HTTPS web application
+    scheme: https
+    baseURL: https://www.youi.com.au/
+    documented: true
+    note: Public marketing, product and consumer quote/claim flows only.
+  - protocol: HTTPS single-page app + private JSON backend
+    scheme: https
+    baseURL: https://portalapi.youi.com.au/
+    documented: false
+    note: First-party backend for the customer portal SPA. Root returns HTTP 404;
+      no swagger/openapi document served. Not a published API.
+  - protocol: REST
+    documented: false
+    note: No public REST API is documented by Youi.
+  - protocol: GraphQL
+    documented: false
+    note: No /graphql surface found.
+  - protocol: Webhooks / events
+    documented: false
+    note: No event catalog and no AsyncAPI. Absence is the finding.
+  - protocol: ACORD / AL3 / EDI
+    documented: false
+    note: No ACORD, AL3, ACORD XML, NGDS or IVANS reference anywhere on the
+      public site. Direct-to-consumer carrier with no agency-management seam.
+  probes:
+  - url: https://www.youi.com.au/
+    status: 200
+    note: Redirects youi.com.au to www. Public marketing site.
+  - url: https://developer.youi.com.au/
+    status: 0
+    note: NXDOMAIN — subdomain does not resolve.
+  - url: https://developers.youi.com.au/
+    status: 0
+    note: NXDOMAIN — subdomain does not resolve.
+  - url: https://docs.youi.com.au/
+    status: 0
+    note: NXDOMAIN — subdomain does not resolve.
+  - url: https://api.youi.com.au/
+    status: 0
+    note: NXDOMAIN — subdomain does not resolve.
+  - url: https://www.youi.com.au/developers
+    status: 404
+  - url: https://www.youi.com.au/api
+    status: 404
+  - url: https://www.youi.com.au/developer
+    status: 404
+  - url: https://www.youi.com.au/partners
+    status: 404
+  - url: https://www.youi.com.au/integrations
+    status: 404
+  - url: https://portal.youi.com.au/
+    status: 200
+    note: Customer policy portal SPA, noindex, login wall. Not a developer portal.
+  - url: https://portalapi.youi.com.au/
+    status: 404
+    note: Private SPA backend declared in the portal HTML meta api-base-url.
+  - url: https://portalapi.youi.com.au/swagger/index.html
+    status: 404
+  - url: https://portalapi.youi.com.au/swagger/v1/swagger.json
+    status: 404
+  - url: https://portalapi.youi.com.au/openapi.json
+    status: 404
+  - url: https://secure.youi.com.au/
+    status: 200
+    note: ASP.NET policy-manager login referenced by the portal.
+  - url: https://quote.youi.com.au/
+    status: 404
+  - url: https://www.youi.com.au/.well-known/openid-configuration
+    status: 404
+  - url: https://portalapi.youi.com.au/.well-known/openid-configuration
+    status: 404
+  - url: https://www.youi.com.au/.well-known/oauth-authorization-server
+    status: 404
+  - url: https://www.youi.com.au/.well-known/security.txt
+    status: 200
+    note: Real PGP-signed security.txt. Contact mailto:security@youi.com,
+      Expires 2024-01-25 (expired), policy link live.
+  - url: https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy
+    status: 200
+  - url: https://www.youi.com.au/sitemap.xml
+    status: 200
+    note: 618 URLs, none developer/API/integration related.
+  - url: https://api.github.com/orgs/youi
+    status: 404
+    note: No GitHub organisation under youi, youi-insurance or youiaustralia.
+  acordPosture: no ACORD reference found
+  insuranceVerbs:
+    quote: not exposed — consumer web/phone flow only (/quote-start, HTTP 200)
+    bind: not exposed
+    issue: not exposed
+    fnol: not exposed — consumer web/phone claims flow only (/claiming)
+    audience: consumer-facing web only; no agent-facing or partner-facing API
+  authModel: none published — customer session login (ASP.NET policy manager at
+    secure.youi.com.au) fronting the portal SPA; no OIDC/OAuth discovery document
+    served
+  specs:
+    openapi: 0
+    asyncapi: 0
+    graphql: 0
+    postman: 0
+    proto: 0
+    note: Nothing harvested because nothing real exists. The openapi/ directory
+      is intentionally omitted rather than populated with fabricated content.
+  disambiguation: Youi (youi.com.au) the Australian general insurer must not be
+    conflated with You.i TV / You.i Engine (youi.tv), an unrelated Canadian
+    software company whose developer documentation does exist. Nothing from
+    youi.tv was used in this record.
+sources:
+- url: https://www.youi.com.au/about-us
+  type: About
+  note: APRA authorisation 2008-03-01, AFSL 316511, ABN 79 123 074 733, HQ
+    2 Smart Drive Sippy Downs QLD, subsidiary of Youi Holdings / OUTsurance
+    International Holdings with OUTsurance Group as ultimate holding company.
+    No mention of APIs, developers, or technology partner integration.
+- url: https://www.youi.com.au/sitemap.xml
+  type: Sitemap
+  note: Full public page inventory; confirms absence of any developer surface.
+- url: https://portal.youi.com.au/
+  type: CustomerPortal
+  note: HTML meta tags reveal api-base-url https://portalapi.youi.com.au/ and
+    policy-manager-login-url at secure.youi.com.au.
+- url: https://www.youi.com.au/.well-known/security.txt
+  type: SecurityTxt
+  note: Only machine-readable well-known artifact Youi serves.
+actions:
+  openapiDirCreated: false
+  apisYmlApisCount: 0
+  reason: |
+    Youi is a direct-to-consumer Australian P&C carrier with no public API
+    surface, no developer portal, no ACORD/AL3 transport, and no CDR
+    obligation for general insurance. apis[] is deliberately empty. Recording
+    the absence accurately is the correct outcome for this record.

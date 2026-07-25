@@ -1,0 +1,60 @@
+aid: youi
+url: https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/apis.yml
+name: Youi
+kind: company
+description: Youi is an Australian general insurance carrier headquartered at Sippy Downs on the
+  Queensland Sunshine Coast, authorised by APRA and operating under AFSL 316511 (ABN 79 123 074 733).
+  It is a wholly owned subsidiary of Youi Holdings Pty Ltd, part of OUTsurance International Holdings,
+  with the South African-listed OUTsurance Group as ultimate holding company. Youi writes personal
+  and small-business property and casualty lines direct to consumers - car, NSW CTP Green Slip, SA
+  CTP, motorcycle, caravan and trailer, watercraft, home building and contents, and small business
+  cover including public liability - and is a member of the Insurance Council of Australia and a
+  signatory to the General Insurance Code of Practice. Its positioning is direct-to-consumer telephone
+  and online underwriting rather than broker distribution. On API posture the honest finding is that
+  Youi publishes no public API surface at all. Probing on 2026-07-25 found no developer portal (the
+  developer., developers., docs. and api. subdomains do not resolve, and /developers, /api, /developer,
+  /partners and /integrations all return HTTP 404), no downloadable OpenAPI or Swagger, no public
+  Postman collection, no GraphQL, and no webhook or event catalog. The only integration-adjacent
+  hosts are the customer self-service policy portal at portal.youi.com.au (HTTP 200, robots noindex,
+  an Angular single-page app behind a login) and its private first-party backend portalapi.youi.com.au
+  (HTTP 404 at root, serving no swagger or openapi document). No ACORD, AL3, ACORD XML, NGDS or IVANS
+  reference was found anywhere on the public site. Australia's Consumer Data Right, which opened
+  banking and energy, was designated for general insurance and then deferred, so no regulatory forcing
+  function exists, and Youi's direct-to-consumer model gives it no broker or agency-management integration
+  seam either. Recorded as partner-gated and customer-login-gated only, with no public self-serve
+  API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- Australia
+- Property and Casualty
+- General Insurance
+- Motor Insurance
+- Home Insurance
+- Business Insurance
+- Compulsory Third Party
+- Carrier
+- Direct to Consumer
+- No Public API
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.youi.com.au/
+- type: About
+  url: https://www.youi.com.au/about-us
+- type: CustomerPortal
+  url: https://portal.youi.com.au/
+- type: SecurityTxt
+  url: https://www.youi.com.au/.well-known/security.txt
+- type: VulnerabilityDisclosure
+  url: https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy
+- type: Support
+  url: https://www.youi.com.au/contact
+- type: Blog
+  url: https://www.youi.com.au/you-connect
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
