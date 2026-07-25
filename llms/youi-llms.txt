@@ -1,0 +1,48 @@
+# Youi
+
+> Youi is an Australian general insurance carrier headquartered at Sippy Downs on the Queensland Sunshine Coast, authorised by APRA and operating under AFSL 316511 (ABN 79 123 074 733). It writes personal and small-business property and casualty lines direct to consumers - car, NSW CTP Green Slip, SA CTP, motorcycle, caravan and trailer, watercraft, home building and contents, and small business cover including public liability. Youi is a wholly owned subsidiary of Youi Holdings Pty Ltd, part of OUTsurance International Holdings, with the South African-listed OUTsurance Group as ultimate holding company.
+
+Important for agents: Youi publishes NO public API. There is no developer portal, no OpenAPI or Swagger document, no GraphQL endpoint, no webhook or event catalog, no public Postman collection, and no SDK in any package registry. Quote, bind, issue and FNOL are all consumer web and telephone flows only; there is no partner-facing or agent-facing programmatic surface. Do not attempt to construct API calls against Youi hosts - portalapi.youi.com.au is a private first-party backend for the customer portal SPA and is not a published interface.
+
+Disambiguation: Youi (youi.com.au), the Australian insurer described here, is NOT You.i TV / You.i Engine (youi.tv), an unrelated Canadian software company whose developer documentation does exist. Package registries returning "youi" results almost always mean You.i TV, not this company.
+
+## Company
+- [Website](https://www.youi.com.au/): Public marketing, product and consumer quote/claim site.
+- [About Us](https://www.youi.com.au/about-us): APRA authorisation, AFSL 316511, ABN 79 123 074 733, ownership and history.
+- [Careers](https://www.youi.com.au/about-us/careers): Roles at the Sippy Downs head office and elsewhere.
+- [Blog - You Connect](https://www.youi.com.au/you-connect): Consumer articles, news and media.
+- [Contact](https://www.youi.com.au/contact): Call centre hours, callback request and support channels.
+
+## Consumer flows (web/phone, not API)
+- [Start a quote](https://www.youi.com.au/quote-start): Consumer web quote flow. No programmatic quote API.
+- [Claiming](https://www.youi.com.au/claiming): Consumer FNOL and claims flow. No programmatic FNOL API.
+- [Customer portal](https://portal.youi.com.au/): Angular single-page policy self-service app behind a login (noindex).
+- [Policy login](https://secure.youi.com.au/Authentication/PolicyLogin.aspx): ASP.NET policy-manager login fronting the portal.
+
+## Legal, compliance and security
+- [Privacy Policy](https://www.youi.com.au/documents/privacy-policy): Australian Privacy Principles handling under the Privacy Act 1988.
+- [Terms of Use](https://www.youi.com.au/documents/terms-of-use): Website terms.
+- [General Insurance Code of Practice](https://www.youi.com.au/documents/code-of-practice): Youi is a signatory to the Code.
+- [Complaints handling](https://www.youi.com.au/handling-your-complaint): Internal dispute resolution and escalation.
+- [Security vulnerability disclosure policy](https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy): How to report a vulnerability.
+- [security.txt](https://www.youi.com.au/.well-known/security.txt): RFC 9116, PGP-signed; contact security@youi.com. Note the Expires field has passed (2024-01-25).
+
+## API Evangelist artifacts in this repo
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/apis.yml): APIs.json profile for Youi.
+- [review.yml](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/review.yml): Full API-surface review, every probe and its HTTP status.
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/conformance/youi-conformance.yml): Standards posture - negative on API standards, positive on regulatory/industry codes.
+- [Well-known index](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/well-known/youi-well-known.yml): Every /.well-known/ probe across all four hosts.
+- [security.txt (harvested)](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/well-known/youi-security.txt): Verbatim copy of the live document.
+- [Domain security](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/security/youi-domain-security.yml): TLS, HSTS, DNSSEC, CAA, SPF, DMARC probe results.
+- [Vulnerability disclosure](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/security/youi-vulnerability-disclosure.yml): Policy and contact.
+- [Packages](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/packages/youi-packages.yml): Registry probe results - zero first-party libraries, with You.i TV disambiguation.
+
+## Absent (verified, not omitted)
+- OpenAPI / Swagger: none. Probed /openapi.json, /openapi.yaml, /swagger.json, /swagger/v1/swagger.json, /api-docs, /v1/openapi.json on www.youi.com.au, portal.youi.com.au and portalapi.youi.com.au on 2026-07-25.
+- Developer portal: none. developer., developers., docs. and api..youi.com.au do not resolve; /developers, /api, /developer, /partners and /integrations return 404.
+- GraphQL: none (404).
+- Webhooks / AsyncAPI / events: none.
+- MCP server: none.
+- OAuth / OIDC discovery: none (404 on every real host).
+- ACORD / AL3 / IVANS / NGDS: no reference anywhere on the site or its 618-URL sitemap.
+- Consumer Data Right: general insurance was designated then deferred, so no CDR obligation and no CDR endpoints.

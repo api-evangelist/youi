@@ -40,6 +40,18 @@ Market context: Australia has the legal machinery for open insurance and no live
 
 > Not to be confused with **You.i TV / You.i Engine** (`youi.tv`), an unrelated Canadian software company that does publish developer documentation. Nothing from that company is recorded here.
 
+## Artifacts
+
+Enrichment round 2026-07-25 harvested everything Youi genuinely publishes:
+
+- [`well-known/youi-security.txt`](well-known/youi-security.txt) — the live RFC 9116 document, PGP clear-signed, saved verbatim. Its `Expires` field (2024-01-25) has passed, so the only machine-readable artifact Youi serves is stale by its own terms.
+- [`well-known/youi-well-known.yml`](well-known/youi-well-known.yml) — every `/.well-known/` probe across all four hosts. **Trap recorded:** `portal.youi.com.au` returns HTTP 200 for *any* path, including `/openapi.json` and every `/.well-known/*`, because the Angular SPA serves a catch-all route. Those 200s are `text/html` shells, not documents.
+- [`security/youi-domain-security.yml`](security/youi-domain-security.yml) — TLS 1.3, HSTS (max-age 15552000), SPF and DMARC `p=reject`; no DNSSEC and no CAA records.
+- [`security/youi-vulnerability-disclosure.yml`](security/youi-vulnerability-disclosure.yml) — policy URL and `security@youi.com` contact from the signed security.txt.
+- [`conformance/youi-conformance.yml`](conformance/youi-conformance.yml) — negative on every API standard (OpenAPI, AsyncAPI, GraphQL, OAuth2, OIDC, RFC 9457, RFC 9727, ACORD, CDR), positive on RFC 9116, the General Insurance Code of Practice, APRA authorisation and Privacy Act 1988 APPs.
+- [`packages/youi-packages.yml`](packages/youi-packages.yml) — zero first-party client libraries, with the npm/PyPI/GitHub-org probe log and the You.i TV disambiguation so a future round cannot mis-attribute `youi-cli` and friends.
+- [`llms/youi-llms.txt`](llms/youi-llms.txt) — generated agent-facing summary that states plainly there is no API to call.
+
 ## Links
 
 - [Website](https://www.youi.com.au/)

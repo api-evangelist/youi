@@ -1,0 +1,88 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://www.youi.com.au/documents/code-of-practice,
+  https://www.youi.com.au/documents/privacy-policy,
+  https://www.youi.com.au/about-us,
+  https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy,
+  live protocol probes 2026-07-25
+summary: >-
+  Youi has no machine-readable API contract, so every API/technical standard
+  below is a negative finding derived from live probes rather than from a spec.
+  Its published conformance is regulatory and industry-code conformance, not
+  interface conformance: APRA authorisation, an AFSL, signatory status to the
+  General Insurance Code of Practice, and Australian Privacy Principles
+  handling under the Privacy Act 1988.
+standards:
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI or Swagger document served on any host. www.youi.com.au,
+    portalapi.youi.com.au: /openapi.json, /swagger.json, /swagger/v1/swagger.json,
+    /api-docs, /v1/openapi.json all HTTP 404. portal.youi.com.au returns HTTP 200
+    for /openapi.json but the body is the Angular SPA index.html, not a spec.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface published; nothing to describe.
+- id: graphql
+  conforms: false
+  evidence: /graphql returns HTTP 404 on www.youi.com.au and portalapi.youi.com.au.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No /.well-known/oauth-authorization-server (404 on www, portalapi, secure)
+    and no documented OAuth flow. The only authentication observable is an
+    end-customer ASP.NET session login at secure.youi.com.au.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on every real host.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No public API and no error contract published.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: >-
+    https://www.youi.com.au/.well-known/security.txt returns 200 with a valid,
+    PGP clear-signed RFC 9116 document (Contact, Expires, Encryption,
+    Preferred-Languages, Canonical, Policy). Caveat - its Expires value is
+    2024-01-25T02:01:00.000Z, so the document is stale by its own terms.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404 on www, portalapi and secure.
+- id: acord
+  conforms: false
+  evidence: >-
+    No ACORD, ACORD XML, AL3, NGDS or IVANS reference anywhere on the public
+    site or in the 618-URL sitemap. Direct-to-consumer distribution means no
+    broker / agency-management download seam.
+- id: cdr-consumer-data-right
+  conforms: false
+  evidence: >-
+    Australia's Consumer Data Right was designated to extend to general
+    insurance and then deferred and de-prioritised, so no CDR obligation applies
+    to Youi and no CDR endpoints exist. Contrast with Australian banking, where
+    the CDR mandate forces a public product-reference API from every ADI.
+- id: general-insurance-code-of-practice
+  conforms: true
+  evidence: >-
+    https://www.youi.com.au/documents/code-of-practice (HTTP 200) states "Youi is
+    a signatory to the General Insurance Code of Practice (the Code)". Industry
+    self-regulatory code administered by the Insurance Council of Australia and
+    monitored by the Code Governance Committee.
+- id: apra-authorisation
+  conforms: true
+  evidence: >-
+    https://www.youi.com.au/about-us - Youi Pty Ltd is authorised by APRA as a
+    general insurer, ABN 79 123 074 733, AFSL 316511. Prudential supervision
+    (including CPS 234 information security) applies, but none of it is
+    published as a machine-readable interface.
+- id: privacy-act-1988-app
+  conforms: true
+  evidence: >-
+    https://www.youi.com.au/documents/privacy-policy (HTTP 200) - Australian
+    Privacy Principles handling for personal information.
+gaps:
+- No machine-readable contract of any kind, so contract-level conformance cannot
+  be asserted in either direction beyond the negative probes above.
+- The one machine-readable artifact Youi does serve (security.txt) is expired and
+  should be re-signed; that is the single cheapest conformance fix available.

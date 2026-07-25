@@ -1,0 +1,90 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of every Youi host on 2026-07-25
+hosts:
+- host: https://www.youi.com.au
+  role: public marketing and consumer quote/claim site
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: youi-security.txt
+    document: true
+    note: >-
+      Real RFC 9116 security.txt, PGP clear-signed (SHA512). Contact
+      mailto:security@youi.com, Encryption https://www.youi.com.au/pgp-key,
+      Policy https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy.
+      Expires field is 2024-01-25T02:01:00.000Z, i.e. the published document is
+      past its own expiry and has not been refreshed.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://portal.youi.com.au
+  role: customer self-service policy portal (Angular SPA, noindex, login wall)
+  note: >-
+    Every path on this host returns HTTP 200 with the same Angular index.html
+    ("Youi Portal") because the SPA serves a catch-all route. The 200s below are
+    therefore NOT real well-known documents - content-type is text/html and the
+    body is the SPA shell. Recorded to prevent a future round mistaking the
+    catch-all for a discovery surface. The same catch-all returns 200 for
+    /openapi.json, which is likewise the HTML shell and not a specification.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    document: false
+    note: SPA catch-all HTML, not a security.txt
+  - path: /.well-known/openid-configuration
+    status: 200
+    document: false
+    note: SPA catch-all HTML, not an OIDC discovery document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    document: false
+    note: SPA catch-all HTML, not an RFC 8414 document
+  - path: /.well-known/api-catalog
+    status: 200
+    document: false
+    note: SPA catch-all HTML, not an RFC 9727 api-catalog
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    document: false
+    note: SPA catch-all HTML, not an ai-plugin manifest
+- host: https://portalapi.youi.com.au
+  role: private first-party JSON backend for the customer portal SPA
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://secure.youi.com.au
+  role: ASP.NET policy-manager login fronting the portal
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+summary:
+  real_documents: 1
+  documents:
+  - security.txt (www.youi.com.au)
+  no_oidc_discovery: true
+  no_oauth_metadata: true
+  no_api_catalog: true

@@ -41,6 +41,31 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: VulnerabilityDisclosure
+  url: security/youi-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/youi-domain-security.yml
+- type: Security
+  name: Security vulnerability disclosure policy
+  url: https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy
+- type: WellKnown
+  name: Well-known probe index (all hosts)
+  url: well-known/youi-well-known.yml
+- type: SecurityTxt
+  name: security.txt (harvested verbatim)
+  url: well-known/youi-security.txt
+- type: Conformance
+  name: Standards and regulatory conformance posture
+  url: conformance/youi-conformance.yml
+- type: Compliance
+  name: General Insurance Code of Practice signatory
+  url: https://www.youi.com.au/documents/code-of-practice
+- type: Packages
+  name: Package registry probe results (no first-party libraries)
+  url: packages/youi-packages.yml
+- type: LLMsTxt
+  name: llms.txt for Youi
+  url: llms/youi-llms.txt
 - type: Website
   url: https://www.youi.com.au/
 - type: About
@@ -55,6 +80,15 @@ common:
   url: https://www.youi.com.au/contact
 - type: Blog
   url: https://www.youi.com.au/you-connect
+- type: PrivacyPolicy
+  url: https://www.youi.com.au/documents/privacy-policy
+- type: TermsOfService
+  url: https://www.youi.com.au/documents/terms-of-use
+- type: Login
+  name: Customer policy login (no developer sign-up exists)
+  url: https://secure.youi.com.au/Authentication/PolicyLogin.aspx
+- type: Careers
+  url: https://www.youi.com.au/about-us/careers
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

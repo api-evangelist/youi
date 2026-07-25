@@ -1,0 +1,56 @@
+generated: '2026-07-25'
+method: searched
+source: registry searches on 2026-07-25 (npm, PyPI, GitHub org lookup, Postman search)
+packages: []
+findings:
+  official_client_libraries: 0
+  note: >-
+    Youi (the Australian general insurer, youi.com.au) publishes no client
+    libraries or SDKs in any public registry. This follows from the absence of a
+    public API: there is nothing for a package to wrap.
+  disambiguation: >-
+    Searching "youi" in package registries returns almost entirely You.i TV /
+    You.i Engine (youi.tv), an unrelated Canadian software company, plus
+    unrelated community UI frameworks. NONE of these belong to Youi Insurance
+    and none may be attributed to this record in a future round.
+registry_probes:
+- registry: npm
+  query: youi
+  status: 200
+  first_party_hits: 0
+  note: >-
+    Matches are You.i TV tooling (youi-cli, appium-youi-driver,
+    appium-youiengine-driver from YOU-i-Labs), the community "youi" Vue/Angular
+    UI frameworks (youi-theme-*, ngx-youi, hyper-youi) and unrelated packages.
+    No Youi Insurance package.
+- registry: pypi
+  query: youi
+  status: 200
+  first_party_hits: 0
+  note: >-
+    pypi.org/project/youi exists but is "editable, live python UI" by Daniel
+    Dugas - unrelated to Youi Insurance.
+- registry: github
+  query: orgs/youi, orgs/youi-insurance, orgs/youiinsurance, orgs/youi-com-au, orgs/youigroup
+  status: 404
+  first_party_hits: 0
+  note: No GitHub organisation exists for Youi Insurance under any obvious name.
+- registry: github
+  query: orgs/outsurance
+  status: 200
+  first_party_hits: 0
+  note: >-
+    The parent group OUTsurance (South Africa) does have a GitHub organisation,
+    but it holds a single unrelated public repo ("highlight", a C# syntax
+    highlighter, last updated 2018) and no Youi code. Deliberately NOT wired as
+    a GitHubOrganization pointer for Youi - it is the parent's org, not Youi's,
+    and contains no Youi artifacts.
+- registry: postman
+  query: youi insurance
+  status: 200
+  first_party_hits: 0
+  note: Postman public search returns zero workspaces, collections or APIs.
+not_probed_reason: >-
+  Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist and crates.io were not
+  individually queried because Youi ships no API and no SDK links exist anywhere
+  in apis.yml or on the public site to derive candidates from.

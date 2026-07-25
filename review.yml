@@ -155,6 +155,69 @@ findings:
   - url: https://api.github.com/orgs/youi
     status: 404
     note: No GitHub organisation under youi, youi-insurance or youiaustralia.
+  - url: https://portal.youi.com.au/openapi.json
+    status: 200
+    date: '2026-07-25'
+    note: >-
+      FALSE POSITIVE, recorded so a later round does not misread it. The Angular
+      SPA on portal.youi.com.au serves a catch-all route, so this returns HTTP 200
+      with content-type text/html and the body is the "Youi Portal" index.html,
+      not a specification. The same catch-all returns 200 for every
+      /.well-known/* path on that host.
+  - url: https://portalapi.youi.com.au/api-docs
+    status: 404
+    date: '2026-07-25'
+  - url: https://portalapi.youi.com.au/v1/openapi.json
+    status: 404
+    date: '2026-07-25'
+  - url: https://portalapi.youi.com.au/.well-known/oauth-protected-resource
+    status: 404
+    date: '2026-07-25'
+  - url: https://www.youi.com.au/llms.txt
+    status: 404
+    date: '2026-07-25'
+  - url: https://www.youi.com.au/.well-known/api-catalog
+    status: 404
+    date: '2026-07-25'
+  - url: https://www.youi.com.au/.well-known/ai-plugin.json
+    status: 404
+    date: '2026-07-25'
+  - url: https://portalapi.youi.com.au/graphql
+    status: 404
+    date: '2026-07-25'
+  - url: https://status.youi.com.au/
+    status: 0
+    date: '2026-07-25'
+    note: NXDOMAIN - no status page. No SLA or uptime page published anywhere.
+  - url: https://www.youi.com.au/documents/code-of-practice
+    status: 200
+    date: '2026-07-25'
+    note: >-
+      Youi is a signatory to the General Insurance Code of Practice. Its only
+      published compliance program.
+  - url: https://www.youi.com.au/documents/privacy-policy
+    status: 200
+    date: '2026-07-25'
+  - url: https://www.youi.com.au/documents/terms-of-use
+    status: 200
+    date: '2026-07-25'
+  - url: https://www.postman.com/ (public search "youi insurance")
+    status: 200
+    date: '2026-07-25'
+    note: Zero workspaces, collections, APIs or specifications. Confirms no Postman surface.
+  - url: https://registry.npmjs.org/-/v1/search?text=youi
+    status: 200
+    date: '2026-07-25'
+    note: >-
+      No Youi Insurance package. All matches are You.i TV / You.i Engine
+      (YOU-i-Labs) or unrelated community UI frameworks.
+  - url: https://api.github.com/orgs/outsurance
+    status: 200
+    date: '2026-07-25'
+    note: >-
+      The parent group OUTsurance has a GitHub organisation, but it holds one
+      unrelated public repo (a 2018 C# syntax highlighter) and no Youi code. Not
+      wired as a GitHubOrganization pointer for Youi.
   acordPosture: no ACORD reference found
   insuranceVerbs:
     quote: not exposed — consumer web/phone flow only (/quote-start, HTTP 200)
