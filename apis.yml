@@ -1,5 +1,8 @@
 aid: youi
 url: https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/apis.yml
+x-api-posture: docs-gated
+x-api-posture-basis: observed
+x-api-posture-note: "On API posture the honest finding is that Youi publishes no public API surface at all."
 name: Youi
 kind: company
 description: Youi is an Australian general insurance carrier headquartered at Sippy Downs on the
