@@ -1,10 +1,17 @@
 aid: youi
+
 url: https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/apis.yml
+
 x-api-posture: docs-gated
+
 x-api-posture-basis: observed
+
 x-api-posture-note: "On API posture the honest finding is that Youi publishes no public API surface at all."
+
 name: Youi
+
 kind: company
+
 description: Youi is an Australian general insurance carrier headquartered at Sippy Downs on the
   Queensland Sunshine Coast, authorised by APRA and operating under AFSL 316511 (ABN 79 123 074 733).
   It is a wholly owned subsidiary of Youi Holdings Pty Ltd, part of OUTsurance International Holdings,
@@ -26,6 +33,7 @@ description: Youi is an Australian general insurance carrier headquartered at Si
   function exists, and Youi's direct-to-consumer model gives it no broker or agency-management integration
   seam either. Recorded as partner-gated and customer-login-gated only, with no public self-serve
   API.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -37,6 +45,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: unknown
@@ -53,7 +62,9 @@ accessModel:
   - security
   generated: '2026-09-02'
   method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+
+image: https://www.youi.com.au/contentassets/43167c5a7e954e23a8acea29205c8026/opengraph-youi-logo.png
+
 tags:
 - Insurance
 - Australia
@@ -65,6 +76,7 @@ tags:
 - Compulsory Third Party
 - Carrier
 - Direct to Consumer
+
 tags_raw:
 - Insurance
 - Australia
@@ -76,11 +88,22 @@ tags_raw:
 - Compulsory Third Party
 - Carrier
 - Direct to Consumer
+
 created: '2026-07-25'
-modified: '2026-07-25'
+
+modified: '2026-10-21'
+
 specificationVersion: '0.23'
-apis: []
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
 common:
+- type: Hosts
+  url: hosts/youi-hosts.yml
+- type: Vendors
+  url: vendors/youi-vendors.yml
 - type: VulnerabilityDisclosure
   url: security/youi-vulnerability-disclosure.yml
 - type: DomainSecurity
@@ -129,8 +152,24 @@ common:
   url: https://secure.youi.com.au/Authentication/PolicyLogin.aspx
 - type: Careers
   url: https://www.youi.com.au/about-us/careers
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+
+apis: []
+
 x-tags-removed:
 - No Public API
+
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: Identity pass 2026-10-21 re-verified Website www.youi.com.au (open front door, names Youi Insurance) and all 12 external pointers (HTTP 200); image set from the site's og:image. No developer portal, GitHub org or Postman workspace is published.
+  evidence:
+  - url: https://www.youi.com.au/
+    status: 200
+  - url: https://www.youi.com.au/contentassets/43167c5a7e954e23a8acea29205c8026/opengraph-youi-logo.png
+    status: 200
+x-enrichment:
+  date: '2026-10-21'
+  status: enriched
+  artifacts_added: 8
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

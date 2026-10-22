@@ -1,5 +1,5 @@
 generated: '2026-07-25'
-method: searched
+method: none
 source: registry searches on 2026-07-25 (npm, PyPI, GitHub org lookup, Postman search)
 packages: []
 findings:

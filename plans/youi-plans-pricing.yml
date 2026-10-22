@@ -1,0 +1,15 @@
+name: Youi pricing
+generated: '2026-10-21'
+method: none
+audience: unclear
+pricing_basis: none
+published: false
+delivery:
+  model: unclear
+plan_count: 0
+plans: []
+note: >-
+  Youi publishes no API or developer pricing because it publishes no public API
+  (no developer portal, no contract; dossier 2026-10-21 contract_discovery all
+  absent). Its insurance premiums are quoted per customer and are a consumer
+  product price, not API pricing, so none are recorded here.

@@ -1,0 +1,69 @@
+generated: '2026-10-21'
+method: searched
+source: https://www.youi.com.au/documents/privacy-policy
+pages_read:
+- url: https://www.youi.com.au/documents/privacy-policy
+  http_status: 200
+- url: https://www.youi.com.au/documents/terms-of-use
+  http_status: 200
+  note: Website terms and cookie policy. The pre-flight data_subject_request candidate here is cookie-purpose text, not a data-subject right; no catalog signal recorded from this page.
+- url: https://www.youi.com.au/documents/security-vulnerability-disclosure-policy
+  http_status: 200
+  note: Vulnerability disclosure policy (security module's concern); no catalog regulatory signal.
+- url: https://www.youi.com.au/documents/code-of-practice
+  http_status: 200
+  note: Commitment to the General Insurance Code of Practice; no catalog signal.
+frameworks_named: [Privacy Act (Australia), General Insurance Code of Practice, 'EU resident rights (GDPR-style, where applicable)']
+signals:
+  data_subject_request:
+    url: https://www.youi.com.au/documents/privacy-policy
+    section: Access and Correction of Personal Information / RESIDENTS IN THE EUROPEAN UNION
+    channel: 13 YOUI (9684); +61 7 3719 4800 from overseas
+    rights_named: [access, correction, erasure (EU residents), objection (EU residents), portability (EU residents)]
+    evidence:
+    - source: https://www.youi.com.au/documents/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We may charge you a reasonable amount to cover the time spent retrieving, copying, and sending out the information, but we will not charge you for making the request."
+    - source: https://www.youi.com.au/documents/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "If you would like to seek correction of your personal information, please contact us using the details below."
+    - source: https://www.youi.com.au/documents/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "You have the right to request we delete your personal information in certain circumstances, including where the information is no longer required for the purpose for which it was collected, or you withdraw consent and there is no other legal ground for processing the personal information."
+    - source: https://www.youi.com.au/documents/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "You have the right to receive a copy of your personal information we hold in a structured, electronic format, and to transmit such data to another data controller, where this is (a) personal information which you have provided to us, (b) if we are processing that information on the basis of your consent or to perform a contract with you and (c) where the processing is carried out by automated means."
+    note: >-
+      Access and correction are offered to everyone; erasure, objection and portability are stated as additional
+      rights for EU residents "where applicable". The portability sentence is a data-subject right, not a
+      service-exit commitment. No response time is stated.
+  data_residency:
+    url: https://www.youi.com.au/documents/privacy-policy
+    section: Disclosure to Overseas Recipients
+    evidence:
+    - source: https://www.youi.com.au/documents/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We collect and provide your personal information to service centres in South Africa, and to certain Service Providers listed in Table A that are based overseas, including in the United States of America."
+    - source: https://www.youi.com.au/documents/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We may store your personal information with service providers or third parties who have data centres outside of Australia."
+    note: >-
+      Disclosure, not a residency guarantee: data leaves Australia (South Africa, USA named) and "the countries ...
+      may vary from time to time". No in-region storage commitment.
+  subprocessors:
+    url: https://www.youi.com.au/documents/privacy-policy
+    section: "Table A: Entities We May Collect and Process Personal Information Through"
+    evidence:
+    - source: https://www.youi.com.au/documents/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Our Service Providers Such as our investigators, assessors, outsourced claims providers, repairers, lawyers, experts, suppliers, data centre service providers, sub contractors, IT infrastructure, digital platforms software and data platform providers."
+    note: >-
+      Categories only; no named subprocessor list is published. The policy states Youi "has contractual agreements
+      in place with our Service Providers to protect personal data from unauthorised access or disclosure."

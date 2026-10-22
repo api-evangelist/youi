@@ -1,0 +1,87 @@
+generated: '2026-10-21'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 5
+  own: 4
+  other_domain: 1
+  platform: 0
+  roles:
+  - api
+  - identity
+  - other
+  - website
+hosts:
+- host: api.com.au
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: api.com.au
+  role: api
+  relation: other-domain
+- host: claims.youi.com.au
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: youi.com.au
+  role: other
+  relation: own
+- host: portal.youi.com.au
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - CustomerPortal
+  serves:
+  - docs
+  registrable_domain: youi.com.au
+  role: other
+  relation: own
+- host: secure.youi.com.au
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - Login
+  serves: []
+  registrable_domain: youi.com.au
+  role: identity
+  relation: own
+- host: www.youi.com.au
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Security
+  - Compliance
+  - Website
+  - About
+  - SecurityTxt
+  - VulnerabilityDisclosure
+  - Support
+  - Blog
+  - PrivacyPolicy
+  - TermsOfService
+  - Careers
+  serves:
+  - cdn
+  vendor: cloudflare
+  registrable_domain: youi.com.au
+  role: website
+  relation: own

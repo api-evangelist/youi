@@ -1,0 +1,8 @@
+name: Youi rate limits
+generated: '2026-10-21'
+method: none
+limit_count: 0
+limits: []
+note: >-
+  No published rate limits: Youi has no public API or developer documentation
+  (no docs host found; portal.youi.com.au is a login-gated customer portal).

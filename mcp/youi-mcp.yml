@@ -1,0 +1,36 @@
+generated: '2026-10-21'
+method: searched
+source: >-
+  Web search on 2026-10-21 for a Youi (youi.com.au) MCP server or developer API, which
+  returned only unrelated insurers' community MCP servers on glama.ai/lobehub and
+  encyclopedia pages. Also the pre-flight dossier (preflight-wave.py, 2026-10-21) for
+  www., portal., secure. and claims.youi.com.au, which found no OpenAPI, AsyncAPI, GraphQL
+  or MCP contract.
+description: >-
+  Youi ships no MCP server, hosted or local, and documents none. No candidate tool list
+  could be derived because Youi publishes no OpenAPI or other contract to derive one from.
+  This file records the negative result so it can be counted. NO MCPServer pointer should
+  be wired into apis.yml.
+status: none
+tools: []
+tool_count: 0
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+observations:
+  - url: https://portal.youi.com.au/mcp
+    observed_by: preflight-wave.py contract_discovery (GET)
+    status: 403
+    control_status: 403
+    verdict: opaque
+    note: >-
+      The customer portal edge answers 403 for this path and for a random control path
+      alike, so it proves nothing about an MCP server. The path is not documented or
+      advertised by Youi, so no JSON-RPC call was sent to it.
+search_results_rejected:
+  - url: https://glama.ai/mcp/servers/Samhud99/insurance-mcp/discussions
+    reason: A third-party community insurance MCP server, not published by Youi.
