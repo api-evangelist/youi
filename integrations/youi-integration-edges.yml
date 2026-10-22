@@ -1,0 +1,94 @@
+generated: '2026-10-21'
+method: searched
+source:
+- https://zapier.com/apps/youi/integrations
+- https://n8n.io/integrations/youi/
+- https://composio.dev/toolkits/youi
+- https://monid.ai/tools/youi
+checked:
+- https://composio.dev/toolkits/youi
+- https://monid.ai/tools/youi
+- https://n8n.io/integrations/youi/
+- https://zapier.com/apps/youi/integrations
+- https://www.make.com/en/integrations/youi
+- https://www.youi.com.au/partners
+- https://www.youi.com.au/integrations
+- https://data.gov.au/data/dataset/asic-afs-licensee
+- https://data.gov.au/data/dataset/asic-credit-licensee
+- https://www.apra.gov.au/register-of-authorised-deposit-taking-institutions
+- https://www.apra.gov.au/registers/list-registered-general-insurers
+summary: 'No integration edges found: no Zapier/n8n app (404), make.com answered 403 (not readable), and www.youi.com.au/partners
+  and /integrations return 404. Youi is a direct-to-consumer insurer with no public API (see apis.yml).'
+marketplace_apps: []
+edges:
+- partner_name: ASIC Australian Financial Services licensees
+  partner: null
+  partner_match: register-name
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.gov.au/data/dataset/ab7eddce-84df-4098-bc8f-500d0d9776d1/resource/d98a113d-6b50-40e6-b65f-2612efc877f4/download/afs_lic_202610.csv
+  category: Australian financial services licence (ASIC)
+  contract_reference:
+    register: ASIC Australian Financial Services licensees
+    spec_file: null
+    standard: null
+    role: afs-licensee
+    registrations:
+    - registered_name: YOUI PTY LTD
+      licences:
+      - AFS licence
+      - general insurance products
+      register_country: AU
+      matched_domain: null
+      matched_by: register-name
+      register_id: AFSL 316511
+      abn_acn: '79123074733'
+      state: QLD
+      start: 03/03/2008
+      register_name_note: 'register-name ''youi'' = youi; no wikidata P856; AU presence: Australia tag'
+    signal_note: 'participation only: a regulator licence / authorisation listing; no API conformance is published
+      by this register'
+    detected_by: sweep-australia-afs-adi-registers.py
+    detected: '2026-10-22'
+    matched_by: register-name
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-australia-afs-adi-registers.py
+  first_seen: '2026-10-22'
+- partner_name: APRA registered general insurers
+  partner: null
+  partner_match: register-name
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.apra.gov.au/registers/list-registered-general-insurers
+  category: Australian authorised general insurer (APRA)
+  contract_reference:
+    register: APRA registered general insurers
+    spec_file: null
+    standard: null
+    role: authorised-general-insurer
+    registrations:
+    - registered_name: Youi Pty Ltd
+      licences:
+      - Authorised to conduct new or renewal insurance business
+      register_country: AU
+      matched_domain: null
+      matched_by: register-name
+      section: Authorised to conduct new or renewal insurance business
+      register_name_note: 'register-name ''youi'' = youi; no wikidata P856; AU presence: Australia tag'
+    signal_note: 'participation only: a regulator licence / authorisation listing; no API conformance is published
+      by this register'
+    detected_by: sweep-australia-afs-adi-registers.py
+    detected: '2026-10-22'
+    matched_by: register-name
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-australia-afs-adi-registers.py
+  first_seen: '2026-10-22'
+templates: []
