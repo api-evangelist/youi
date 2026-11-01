@@ -1,4 +1,4 @@
-# Youi (youi)
+# Youi
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,68 +64,98 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Youi is an Australian general insurance carrier headquartered at Sippy Downs on the Queensland Sunshine Coast, authorised by APRA and operating under AFSL 316511 (ABN 79 123 074 733). It is a wholly owned subsidiary of Youi Holdings Pty Ltd, part of OUTsurance International Holdings, with the OUTsurance Group as ultimate holding company. Youi writes personal and small-business property and casualty lines direct to consumers — car, NSW CTP Green Slip, SA CTP, motorcycle, caravan and trailer, watercraft, home building and contents, and small business cover — and is a member of the Insurance Council of Australia and a signatory to the General Insurance Code of Practice.
+Youi is an Australian general insurance carrier headquartered at Sippy Downs on the Queensland Sunshine Coast, authorised by APRA and operating under AFSL 316511 (ABN 79 123 074 733). It is a wholly owned subsidiary of Youi Holdings Pty Ltd, part of OUTsurance International Holdings, with the South African-listed OUTsurance Group as ultimate holding company. Youi writes personal and small-business property and casualty lines direct to consumers - car, NSW CTP Green Slip, SA CTP, motorcycle, caravan and trailer, watercraft, home building and contents, and small business cover including public liability - and is a member of the Insurance Council of Australia and a signatory to the General Insurance Code of Practice. Its positioning is direct-to-consumer telephone and online underwriting rather than broker distribution. On API posture the honest finding is that Youi publishes no public API surface at all. Probing on 2026-07-25 found no developer portal (the developer., developers., docs. and api. subdomains do not resolve, and /developers, /api, /developer, /partners and /integrations all return HTTP 404), no downloadable OpenAPI or Swagger, no public Postman collection, no GraphQL, and no webhook or event catalog. The only integration-adjacent hosts are the customer self-service policy portal at portal.youi.com.au (HTTP 200, robots noindex, an Angular single-page app behind a login) and its private first-party backend portalapi.youi.com.au (HTTP 404 at root, serving no swagger or openapi document). No ACORD, AL3, ACORD XML, NGDS or IVANS reference was found anywhere on the public site. Australia's Consumer Data Right, which opened banking and energy, was designated for general insurance and then deferred, so no regulatory forcing function exists, and Youi's direct-to-consumer model gives it no broker or agency-management integration seam either. Recorded as partner-gated and customer-login-gated only, with no public self-serve API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/youi/refs/heads/main/apis.yml)
+**Areas:** Insurance · Australia · Property and Casualty · General Insurance · Auto Insurance · Home Insurance · Business Insurance · Compulsory Third Party · Carrier · Direct to Consumer
 
-## Tags
+## Youi on APIs.io
 
-- Insurance
-- Australia
-- Property and Casualty
-- General Insurance
-- Motor Insurance
-- Home Insurance
-- Business Insurance
-- Compulsory Third Party
-- Carrier
-- Direct to Consumer
-- No Public API
+Everything profiled for Youi is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/youi/](https://apis.io/providers/youi/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Security (2)
 
-**None.** Youi publishes no public API.
+Authentication, trust centre, and vulnerability disclosure.
 
-This is the honest, recorded outcome of a full probe on 2026-07-25, not a gap in research:
+- [Youi Domain Security](https://apis.io/security/youi/youi-domain-security/)
+- [Youi Vulnerability Disclosure](https://apis.io/security/youi/youi-vulnerability-disclosure/)
 
-- **No developer portal.** `developer.youi.com.au`, `developers.youi.com.au`, `docs.youi.com.au` and `api.youi.com.au` do not resolve in DNS. `https://www.youi.com.au/developers`, `/api`, `/developer`, `/partners` and `/integrations` all return HTTP 404. The 618-URL public sitemap contains no developer, API or integration page — the only "partnership" pages are sports sponsorships.
-- **The only portal is a customer login wall.** [portal.youi.com.au](https://portal.youi.com.au/) returns HTTP 200 but is a `noindex` Angular single-page app for policyholders, fronting an ASP.NET policy-manager login at `secure.youi.com.au`. Its own HTML declares a private backend at `portalapi.youi.com.au`, which returns HTTP 404 at root and serves no `swagger.json` or `openapi.json`. That is a first-party SPA backend, not a published API, and it is not listed as one.
-- **No OpenAPI, Swagger, Postman, GraphQL, gRPC, webhooks or AsyncAPI** were found, so this repo has no `openapi/` directory.
-- **ACORD posture: no ACORD reference found.** No ACORD, AL3, ACORD XML, NGDS or IVANS mention anywhere on the public site. Youi distributes direct to consumers rather than through brokers, so it has no agency-management-system download seam.
-- **Quote / bind / issue / FNOL: none exposed programmatically.** Quoting and claims are consumer web and phone flows only.
-- **Auth model:** none published. No OpenID Connect or OAuth discovery document is served; the only authentication is an end-customer session login.
+#### Plans and pricing (1)
 
-Market context: Australia has the legal machinery for open insurance and no live obligation. APRA supervises prudentially, and the Consumer Data Right that already opened banking and energy was designated to extend to general insurance and then deferred and de-prioritised. No forcing function reaches a carrier like Youi.
+Published plans, tiers and prices.
 
-> Not to be confused with **You.i TV / You.i Engine** (`youi.tv`), an unrelated Canadian software company that does publish developer documentation. Nothing from that company is recorded here.
+- [Youi Plans Pricing](https://apis.io/plans/youi/youi-plans-pricing/)
 
-## Artifacts
+#### Rate limits (1)
 
-Enrichment round 2026-07-25 harvested everything Youi genuinely publishes:
+Published request limits.
 
-- [`well-known/youi-security.txt`](well-known/youi-security.txt) — the live RFC 9116 document, PGP clear-signed, saved verbatim. Its `Expires` field (2024-01-25) has passed, so the only machine-readable artifact Youi serves is stale by its own terms.
-- [`well-known/youi-well-known.yml`](well-known/youi-well-known.yml) — every `/.well-known/` probe across all four hosts. **Trap recorded:** `portal.youi.com.au` returns HTTP 200 for *any* path, including `/openapi.json` and every `/.well-known/*`, because the Angular SPA serves a catch-all route. Those 200s are `text/html` shells, not documents.
-- [`security/youi-domain-security.yml`](security/youi-domain-security.yml) — TLS 1.3, HSTS (max-age 15552000), SPF and DMARC `p=reject`; no DNSSEC and no CAA records.
-- [`security/youi-vulnerability-disclosure.yml`](security/youi-vulnerability-disclosure.yml) — policy URL and `security@youi.com` contact from the signed security.txt.
-- [`conformance/youi-conformance.yml`](conformance/youi-conformance.yml) — negative on every API standard (OpenAPI, AsyncAPI, GraphQL, OAuth2, OIDC, RFC 9457, RFC 9727, ACORD, CDR), positive on RFC 9116, the General Insurance Code of Practice, APRA authorisation and Privacy Act 1988 APPs.
-- [`packages/youi-packages.yml`](packages/youi-packages.yml) — zero first-party client libraries, with the npm/PyPI/GitHub-org probe log and the You.i TV disambiguation so a future round cannot mis-attribute `youi-cli` and friends.
-- [`llms/youi-llms.txt`](llms/youi-llms.txt) — generated agent-facing summary that states plainly there is no API to call.
+- [Youi Rate Limits](https://apis.io/rate-limits/youi/youi-rate-limits/)
 
-## Links
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.youi.com.au/)
-- [About Us](https://www.youi.com.au/about-us)
-- [Customer Portal](https://portal.youi.com.au/) (login required)
-- [security.txt](https://www.youi.com.au/.well-known/security.txt)
-- [Security Vulnerability Disclosure Policy](https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy)
-- [Contact](https://www.youi.com.au/contact)
-- [You Connect (news and stories)](https://www.youi.com.au/you-connect)
+- [Support](https://www.youi.com.au/contact)
+- [Blog](https://www.youi.com.au/you-connect)
+- [Security](https://www.youi.com.au/about-us/security-vulnerability-disclosure-policy)
+- [Compliance](https://www.youi.com.au/documents/code-of-practice)
+- [Terms of service](https://www.youi.com.au/documents/terms-of-use)
+- [Privacy policy](https://www.youi.com.au/documents/privacy-policy)
 
-## Review
+## API Evangelist rating
 
-See [review.yml](review.yml) for the full probe log, HTTP statuses, ACORD posture, and transport findings.
+**Kin Score 21.5** — emerging · rubric 0.24.0 · scored 2026-10-21
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 42.1 |
+
+**Agent readiness 5.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.3** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/youi/](https://apis.io/providers/youi/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Youi: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/youi/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
